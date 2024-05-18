@@ -9,7 +9,13 @@ function App() {
 
   return (
     <>
-     <Home/>
+      <Router>
+        <Routes>
+          <Route path = '/'>
+            <Route index element = {<Home/>}/>
+          </Route>
+        </Routes>
+      </Router>
     </>
   )
 }
