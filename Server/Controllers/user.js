@@ -115,7 +115,7 @@ router.post('/upload', upload.single('excelFile'), async (req, res) => {
 
 // Schedule the task to run every day at 4 PM
 // Schedule the task to run every day at 4 PM
-cron.schedule('28 17 * * *', async () => {
+cron.schedule('0 10 * * *', async () => {
     try {
         const today = new Date();
         const todayMonth = today.getMonth() + 1;
