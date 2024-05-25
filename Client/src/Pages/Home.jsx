@@ -20,7 +20,7 @@ const Home = () => {
         formData.append('excelFile' , file)
 
         try{
-            const response = await axios.post('http://localhost:5001/api/users/upload',
+            const response = await axios.post('https://fullstachwishes-backend.onrender.com/api/users/upload',
                 formData,{
 
                     headers:{
