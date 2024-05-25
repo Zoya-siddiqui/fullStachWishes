@@ -3,30 +3,30 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-
 const app = express();
 dotenv.config();
 
 app.use(express.json());
 app.use(cors());
 
-const PORT = 5001;
+const PORT = process.env.PORT || 5001; // Use the port from environment variables
 
-mongoose.connect(process.env.MONGO_URI).then(()=>{
-    console.log("connected to MongoDB");
-}).catch((error)=>{
-    console.error("MOngoDb Connection error", error);
-})
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.error("MongoDB Connection error", error);
+  });
 
-import userRouter from './Controllers/user.js'; 
+import userRouter from './Controllers/user.js';
 
+app.use('/api/users', userRouter);
 
-app.use('/api/users' , userRouter )
-
-app.get('/', (req , res)=>{
-    res.send("hello zoya");
+app.get('/', (req, res) => {
+  res.send("hello zoya");
 });
 
-app.listen(PORT , ()=>{
-    console.log(`server is running on ${PORT}`);
-} )
+app.listen(PORT, () => {
+  console.log(`Server is running on ${PORT}`);
+});
